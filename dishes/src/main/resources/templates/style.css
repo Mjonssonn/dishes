@@ -1,0 +1,53 @@
+       @import url('http://fonts.cdnfonts.com/css/matrix');
+
+        body {
+        background-image: url("https://cdn.wallpapersafari.com/4/21/zmaGlS.gif");
+        }
+
+        input[type=text] {
+        background-color: white;
+        color: black;
+        font-weight: bold;
+        }
+
+        input {
+        width: 100%;
+        padding-bottom: 5px;
+          margin-top: 4px;
+          margin-bottom: 4px;
+        font-family: 'Matrix', sans-serif;
+        border: 3px solid #239B49;
+        }
+
+        h1 {
+        color: white;
+        font-size: 3vw;
+        font-family: 'Matrix', sans-serif;
+        }
+
+        .my-custom-scrollbar {
+        position: relative;
+        height: 200px;
+        overflow: auto;
+        }
+
+        footer {
+        font-family: 'Matrix', sans-serif;
+        position: fixed;
+        }
+
+        table {
+        font-family: 'Matrix', sans-serif;
+        border: 3px solid #239B49;
+        }
+
+        div {
+        text-align: center;
+        }
+
+        .datatable {
+        text-align: center;
+        height: 20px;
+        padding: 15px;
+        border: 15px red;
+        }

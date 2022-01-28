@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../css/shards.min.css">
+    <link href="http://fonts.cdnfonts.com/css/matrix" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+
+    <style>
+
+
+        @import url('http://fonts.cdnfonts.com/css/matrix');
+
+        body {
+        background-image: url("https://cdn.wallpapersafari.com/4/21/zmaGlS.gif");
+        text-align: center;
+        }
+
+        input[type=text] {
+        background-color: white;
+        color: black;
+        font-weight: bold;
+        }
+
+        input, a{
+        width: 100%;
+        padding-bottom: 5px;
+          margin-top: 4px;
+          margin-bottom: 4px;
+        font-family: 'Matrix', sans-serif;
+        border: 3px solid #239B49;
+        }
+
+        h1 {
+        color: white;
+        font-size: 3vw;
+        font-family: 'Matrix', sans-serif;
+        }
+
+        .my-custom-scrollbar {
+        position: relative;
+        height: 200px;
+        overflow: auto;
+        }
+
+        footer {
+        font-family: 'Matrix', sans-serif;
+        position: fixed;
+        }
+
+        table {
+        font-family: 'Matrix', sans-serif;
+        border: 3px solid #239B49;
+        margin-left: auto;
+        margin-right: auto;
+        }
+
+        div {
+        text-align: center;
+        }
+
+        .datatable {
+        text-align: center;
+        height: 20px;
+        padding: 15px;
+        border: 15px red;
+        }
+
+    </style>
+
+    <script   src="https://code.jquery.com/jquery-1.12.1.js"   integrity="sha256-VuhDpmsr9xiKwvTIHfYWCIQ84US9WqZsLfR4P7qF6O8="   crossorigin="anonymous"></script>
+
+
+</head>
+<body>
+
+<!-- Header -->
+<header>
+    <div class="p-5 text-center bg-black">
+        <h1 class="mb-3">E Corp Food Lab</h1>
+    </div>
+</header>
+
+
+<!-- Save Dish To Table -->
+<div class="container col-md-4" spellcheck="true">
+    <table class="table table-striped table-dark">
+    <form th:action="@{/save-dish}" th:object="${dish}" method="POST" >
+        <input maxlength="200" required type="text" placeholder="Dish Name" th:field="*{dishName}"><br>
+        <input maxlength="1000" required type="text" placeholder="Calories" th:field="*{calories}"><br>
+        <input maxlength="1000" required type="text" placeholder="Carbs" th:field="*{carbohydrates}"><br>
+        <input maxlength="1000" required type="text" placeholder="Protein" th:field="*{protein}"><br>
+    <input type="submit" class="btn btn-success col-md-14" value="Add To Table">
+    </form>
+    </table>
+</div>
+
+<!-- Content Table -->
+<div class="datatable">
+    <table class="table table-striped table-dark col-md-4" style="background-color: black">
+
+        <div class="table-responsive-sm">
+        <thead>
+            <tr>
+                <th scope="col">Dish</th>
+                <th scope="col">Calories</th>
+                <th scope="col">Carbs</th>
+                <th scope="col">Protein</th>
+                <th scope="col">Delete</th>
+                <th scope="col">Update</th>
+            </tr>
+
+
+            <tr th:each="dish:${dishes}">
+                <td th:text="${dish.dishName}"/>
+                <td th:text="${dish.calories}"/>
+                <td th:text="${dish.carbohydrates}"/>
+                <td th:text="${dish.protein}"/>
+                <td><a th:href="@{/delete-dish/{id}(id=${dish.dishId})}" type="button" value="Delete" class="btn-sm btn-danger col-md-14">Delete</a></td>
+                <td><a th:href="@{/update-dish/{id}(id=${dish.dishId})}" type="button" class="btn btn-secondary"><i class="btn-sm btn-secondary col-md-14"></i> Edit</a></td>
+            </tr>
+        </thead>
+        </div>
+    </table>
+</div>
+
+
+<!-- Footer -->
+<footer class="text-center text-white fixed-bottom" style="background-color: #white;">
+    <!-- Grid container -->
+    <div class="container p-4"></div>
+    <!-- Grid container -->
+
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: transparent;">
+        <ul>
+
+            <li class="text-white" href="https://mdbootstrap.com/">© 2022 Copyright: E Corp</li>
+            <li class="text-white" href="https://mdbootstrap.com/">City: N/A </li>
+            <li class="text-white" href="https://mdbootstrap.com/">Contact: Not Available</li>
+
+        </ul>
+    </div>
+    <!-- Copyright -->
+
+</footer>
+</body>
+</html>
